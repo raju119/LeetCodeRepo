@@ -1,0 +1,81 @@
+/**
+ * @author NarayanaRaju
+ *
+ */
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode temp1=l1,temp2=l2;
+        ListNode result = new ListNode();
+        ListNode temp3 = result,temp4;
+        int carry = 0,sum = 0;
+        while(temp1 != null && temp2 != null){
+            sum = temp1.val + temp2.val + carry;
+            if(sum >= 10){
+                temp4 = new ListNode((sum%10));
+                System.out.println("temp4 value-->"+temp4.val);
+                carry = 1;
+            }
+            else{
+                temp4 = new ListNode(sum);
+                System.out.println("temp4 value-2nd->"+temp4.val);
+                carry = 0;
+            }
+            temp3.next = temp4;
+            temp3 = temp3.next;
+            temp1 = temp1.next;
+            temp2 = temp2.next;
+        }
+        if(temp1 == null){
+            
+            while(temp2 != null){
+                sum = temp2.val + carry;
+                if(sum >= 10){
+                    temp4 = new ListNode(sum%10);
+                        carry = 1;
+                }
+                else{
+                    temp4 = new ListNode(sum);
+                    carry = 0;
+                }
+                System.out.println("temp4 value-3rd->"+temp4.val);
+                temp3.next = temp4;
+                temp3 = temp3.next;
+                temp2 = temp2.next;
+            }
+        }
+        else{
+            while(temp1 != null){
+                sum = temp1.val + carry;
+                if(sum >= 10){
+                    temp4 = new ListNode(sum%10);
+                    carry = 1;
+                }
+                else{
+                    temp4 = new ListNode(sum);
+                    carry = 0;
+                }
+                System.out.println("temp4 value-4th->"+temp4.val);
+                temp3.next = temp4;
+                temp3 = temp3.next;
+                temp1 = temp1.next;
+            }
+        }
+        if(carry == 1){
+            temp4 = new ListNode(1);
+            temp3.next = temp4;
+            temp3 = temp3.next;
+        }
+        
+        return result.next;
+    }
+}

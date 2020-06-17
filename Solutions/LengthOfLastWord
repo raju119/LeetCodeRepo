@@ -1,0 +1,13 @@
+/**
+ * @author NarayanaRaju
+ *
+ */
+class Solution {
+    public int lengthOfLastWord(String s) {
+        String[] spl = s.split(" ");
+        if(spl.length == 0){
+            return 0;
+        }
+        return spl[spl.length-1].length();
+    }
+}

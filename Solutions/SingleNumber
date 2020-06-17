@@ -1,0 +1,24 @@
+/**
+ * @author NarayanaRaju
+ *
+ */
+class Solution {
+    public int singleNumber(int[] nums) {
+        Map<Integer,Integer> hm = new HashMap<>();
+        for(Integer i : nums){
+            if(hm.get(i) != null){
+                hm.put(i,hm.get(i)+1);
+            }
+            else{
+                hm.put(i,1);
+            }
+        }
+        Set<Integer> keys = hm.keySet();
+        for(Integer i:keys){
+            if(hm.get(i) == 1){
+                return i;
+            }
+        }
+        return -1;
+    }
+}

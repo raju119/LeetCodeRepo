@@ -1,0 +1,22 @@
+/**
+ * @author NarayanaRaju
+ *
+ */
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        int size = nums.length;
+        boolean flag = false;
+        for(int i=0;i<size;i++){
+            for(int j=0;j<size;j++){
+                if(j != i && nums[i] + nums[j] == target){
+                //    flag = true;
+                //    break;
+                    int[] result = {i,j};
+                    return result;
+                }
+            }
+        }
+        int[] res = new int[2];
+        return res;
+    }
+}
